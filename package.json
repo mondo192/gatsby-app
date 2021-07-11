@@ -1,0 +1,78 @@
+{
+  "name": "app",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "jest",
+    "prepare": "husky install",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "test-all": "yarn run check-format && yarn run check-lint && yarn run check-types && yarn run build",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{js,jsx,ts,tsx,json,md}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "msw": {
+    "workerDirectory": "public"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "gatsby": "^3.9.1",
+    "gatsby-plugin-manifest": "^3.9.0",
+    "gatsby-plugin-offline": "^4.9.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.14.5",
+    "@babel/runtime": "^7.14.6",
+    "@types/eslint": "^7.2.14",
+    "@types/eslint-plugin-prettier": "^3",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.1",
+    "@types/prettier": "^2.3.2",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "babel-jest": "^27.0.6",
+    "babel-preset-gatsby": "^1.9.0",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.0.0",
+    "msw": "^0.31.0",
+    "pinst": "^2.1.6",
+    "prettier": "^2.3.2",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}
